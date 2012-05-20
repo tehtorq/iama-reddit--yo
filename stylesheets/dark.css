@@ -25,6 +25,10 @@ body {
  -webkit-background-size: 101% 101%;
 }
 
+body a {
+  text-decoration: none;
+}
+
 .md p, .md h1 {
   margin: 5px 0;
   padding: 0;

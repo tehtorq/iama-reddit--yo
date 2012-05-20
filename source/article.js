@@ -5,9 +5,9 @@ enyo.kind({
   tag: "div",
 
   components: [
-    { tag: "div", name: "comment_column", classes: "column", components: [{ tag: "div", name: "comment_counter", classes: "comment_counter", ontap: "commentCounterTap"}]},
+    { tag: "div", name: "comment_column", classes: "column", components: [{tag: "a", name: "comments_link", components: [{ tag: "div", name: "comment_counter", classes: "comment_counter", ontap: "commentCounterTap"}]}]},
     { tag: "div", name: "vote_desc", classes: "vote_desc"},
-    { tag: "div", name: "title_holder", components: [{ tag: "img", name: "icon", classes: "reddit_thumbnail", ontap: "iconTap"},{ tag: "div", name: "title", classes: "comment_description"}]},
+    { tag: "div", name: "title_holder", components: [{tag: "a", name: "icon_link", components: [{ tag: "img", name: "icon", classes: "reddit_thumbnail", ontap: "iconTap"}]},{ tag: "div", name: "title", classes: "comment_description"}]},
     { tag: "div", name: "description", classes: "article_desc"}
   ],
   
@@ -52,10 +52,12 @@ enyo.kind({
   },
   
   commentCounterChanged: function() {
+    this.$.comments_link.setAttributes({href: 'http://reddit.com' + this.data.permalink, target: '_blank'});
     this.$.comment_counter.setContent(this.data.num_comments);
   },
   
   iconChanged: function() {
+    this.$.icon_link.setAttributes({href: this.data.url, target: '_blank'});
     this.$.icon.setSrc(this.iconFormatter());
   },
   
